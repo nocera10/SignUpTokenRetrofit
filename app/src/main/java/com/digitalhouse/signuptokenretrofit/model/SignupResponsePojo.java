@@ -1,4 +1,4 @@
-package com.digitalhouse.signuptokenretrofit.models;
+package com.digitalhouse.signuptokenretrofit.model;
 
 public class SignupResponsePojo {
 

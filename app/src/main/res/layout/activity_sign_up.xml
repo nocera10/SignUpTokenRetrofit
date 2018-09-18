@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".SignupActivity">
+    tools:context=".activity.SignupActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,16 +37,8 @@
             android:id="@+id/signup_email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:hint="email" />
 
-        <EditText
-
-            android:id="@+id/signup_password"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/signup_email"
-            android:hint="password" />
 
     </RelativeLayout>
 
@@ -60,7 +52,7 @@
             android:id="@+id/signup_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="signUpAction"
+            android:onClick="signupAction"
             android:text="sign up" />
 
     </LinearLayout>

@@ -1,13 +1,20 @@
-package com.digitalhouse.signuptokenretrofit;
+package com.digitalhouse.signuptokenretrofit.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.digitalhouse.signuptokenretrofit.models.SignupResponsePojo;
+import com.digitalhouse.signuptokenretrofit.R;
+import com.digitalhouse.signuptokenretrofit.model.EmailPojo;
+import com.digitalhouse.signuptokenretrofit.model.SignupResponsePojo;
 import com.digitalhouse.signuptokenretrofit.network.RetrofitClientInstance;
 import com.digitalhouse.signuptokenretrofit.network.ServiceRetrofit;
 
@@ -19,7 +26,6 @@ public class SignupActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     EditText signupEmail;
-    EditText signupPassword;
     Button signupButton;
 
     @Override
@@ -28,12 +34,11 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         signupEmail = findViewById(R.id.signup_email);
-        signupPassword = findViewById(R.id.signup_password);
         signupButton = findViewById(R.id.signup_button);
 
     }
 
-    public void signUpAction() {
+    public void signupAction(View v) {
 
         progressDialog = new ProgressDialog(SignupActivity.this);
         progressDialog.setMessage("Loading...");
@@ -41,7 +46,9 @@ public class SignupActivity extends AppCompatActivity {
 
         ServiceRetrofit service = RetrofitClientInstance.getRetrofitInstance().create(ServiceRetrofit.class);
 
-        Call<SignupResponsePojo> call = service.getSignupResponse(signupEmail.getText().toString());
+        EmailPojo email = new EmailPojo(signupEmail.getText().toString());
+
+        Call<SignupResponsePojo> call = service.getSignupResponse(email);
 
         call.enqueue(new Callback<SignupResponsePojo>() {
 
@@ -49,14 +56,29 @@ public class SignupActivity extends AppCompatActivity {
             public void onResponse(Call<SignupResponsePojo> call, Response<SignupResponsePojo> response) {
                 progressDialog.dismiss();
                 String token = response.body().getUser().getToken();
-                Toast.makeText(SignupActivity.this, "Fucking right indian boy", Toast.LENGTH_SHORT).show();
+                SignupActivity.setTokenToPreference(SignupActivity.this, token);
+                Log.i("GETTOKEN1", token);
+
+                // This intent below just changes activity. I am not using bundle to send the token because the SharedPreferences above
+                Intent intent = new Intent(SignupActivity.this, DogBreedActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(SignupActivity.this, "Sign Up successful", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<SignupResponsePojo> call, Throwable t) {
                 progressDialog.dismiss();
-                Toast.makeText(SignupActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this, "Invalid email. Please provide a valid one", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public static void setTokenToPreference(Context context, String value) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putString("TOKEN", value).apply();
+    }
+
+    public static String getTokenFromPreference(Context context, String key) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getString("TOKEN", "No String found in preferences");
     }
 }

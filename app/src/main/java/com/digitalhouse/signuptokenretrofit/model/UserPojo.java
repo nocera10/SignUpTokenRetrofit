@@ -1,4 +1,4 @@
-package com.digitalhouse.signuptokenretrofit.models;
+package com.digitalhouse.signuptokenretrofit.model;
 
 import com.google.gson.annotations.SerializedName;
 

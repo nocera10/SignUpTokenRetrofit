@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DogBreedActivity"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a Dog breed!"
+            android:textSize="40sp"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="42.5"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            android:gravity="center">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Husky"
+                android:textSize="40sp" />
+            
+            <Button
+                android:id="@+id/husky_images_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="view images"
+                android:textSize="25sp"
+                android:onClick="huskyButtonAction"/>
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hound"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/hound_images_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="view images"
+                android:textSize="25sp"
+                android:onClick="houndButtonAction"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="42.5"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pug"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/pug_images_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="view images"
+                android:textSize="25sp"
+                android:onClick="pugButtonAction"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Labrador"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/labrador_images_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="view images"
+                android:textSize="25sp"
+                android:onClick="labradorButtonAction"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
