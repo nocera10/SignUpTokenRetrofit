@@ -20,6 +20,9 @@
         </activity>
         <activity android:name=".activity.DogBreedActivity" />
         <activity android:name=".activity.HuskyImagesActivity" />
+        <activity android:name=".activity.HoundImagesActivity" />
+        <activity android:name=".activity.PugImagesActivity" />
+        <activity android:name=".activity.LabradorImagesActivity" />
         <activity android:name=".activity.DetailActivity" />
     </application>
 

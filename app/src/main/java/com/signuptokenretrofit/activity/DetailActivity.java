@@ -18,7 +18,7 @@ public class DetailActivity extends AppCompatActivity {
 
         dogDetailPicture = findViewById(R.id.image_view_detail);
 
-        String urlImage = getIntent().getExtras().getString("husky_picture");
+        String urlImage = getIntent().getExtras().getString("dog_picture");
 
         Glide.with(this)
                 .load(urlImage)
